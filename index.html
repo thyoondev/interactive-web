@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: #222;
+      }
+      @keyframes spaceship-ani {
+        to {
+          background-position: -2550px 0;
+        }
+      }
+      .spaceship {
+        width: 150px;
+        height: 150px;
+        background: url("./sprite_spaceship.png") no-repeat 0 0 / auto 150px;
+        animation: spaceship-ani 1s infinite steps(17);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="spaceship"></div>
+  </body>
+</html>
