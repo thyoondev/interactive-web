@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .world {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80vw;
+        height: 80vh;
+        background: #fff000;
+        /* perspective: 500px; */
+      }
+      .card {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100px;
+        height: 150px;
+        background: red;
+        border-radius: 0.5em;
+        font-size: 1.5em;
+        margin: 1em;
+        transform: perspective(500px) rotateY(45deg);
+      }
+      .card:hover {
+        transform: perspective(500px) rotateY(0deg);
+        transition: 0.3s;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="world">
+      <div class="card" onclick="alert('hello!')">CARD</div>
+      <div class="card">CARD</div>
+      <div class="card">CARD</div>
+    </div>
+  </body>
+</html>
