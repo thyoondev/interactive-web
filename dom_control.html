@@ -27,6 +27,8 @@
       .special {
         border: 10px dashed red;
       }
+      /* [javascript] DOMContentLoaded와 load 이벤트의 차이점 */
+      /* http://daplus.net/javascript-domcontentloaded%EC%99%80-load-%EC%9D%B4%EB%B2%A4%ED%8A%B8%EC%9D%98-%EC%B0%A8%EC%9D%B4%EC%A0%90/ */
     </style>
   </head>
   <body>
@@ -68,7 +70,7 @@
       //js로 class 붙이기
       const ilbuni = document.querySelector(".ilbuni");
       //방법 1
-      ilbuni.classList.add("special");
+      //   ilbuni.classList.add("special");
 
       //방법 2
       //   ilbuni.className = "special";
@@ -81,6 +83,13 @@
 
       //class를 toggle로 작동
       ilbuni.classList.toggle("ilbuni"); //wow 놀랍다 !
+
+      //---------------------------------------------------------------------------------------------------------------------
+      //이벤트의 기본 동작
+      const ilbuniEvent = document.querySelector(".ilbuni:nth-child(3)");
+      ilbuniEvent.addEventListener("click", function () {
+        ilbuniEvent.classList.toggle("special");
+      }); //이벤트 등록
     </script>
   </body>
 </html>
