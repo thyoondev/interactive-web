@@ -42,33 +42,34 @@
       <div class="ilbuni c">
         <img src="images/ilbuni_2.png" alt="일분이" />
       </div>
-    </div>
-    <div class="ilbuni d">
-      <img src="images/ilbuni_3.png" alt="일분이" />
+      <div class="ilbuni d">
+        <img src="images/ilbuni_3.png" alt="일분이" />
+      </div>
     </div>
 
     <script>
-      const char = document.querySelector(".characters"); // class를 js에서 선택하는 법
-      char.setAttribute("data-id", 123); //date-id라는 속성이 만들어지고 그 값으로 123이 들어감
-      char.getAttribute("data-id"); //내가 얻어오고자하는 속성의 이름을 적어 줌
+      //   const char = document.querySelector(".characters"); // class를 js에서 선택하는 법
+      //   char.setAttribute("data-id", 123); //date-id라는 속성이 만들어지고 그 값으로 123이 들어감
+      //   char.getAttribute("data-id"); //내가 얻어오고자하는 속성의 이름을 적어 줌
 
       //엘리먼트 캡슐화
       //생성
-      const pElem = document.createElement("p"); //메모리상에 올라간 상태
-      console.log("엘리먼트 태그 생성 단계 : ", pElem);
+      //   const pElem = document.createElement("p"); //메모리상에 올라간 상태
+      //   console.log("엘리먼트 태그 생성 단계 : ", pElem);
 
-      pElem.innerHTML = "<a href = '#'>안녕?</a>"; //태그 사이에 내용
-      console.log("태그 사이에 내용 작성 단계 : ", pElem.innerHTML);
+      //   pElem.innerHTML = "<a href = '#'>안녕?</a>"; //태그 사이에 내용
+      //   console.log("태그 사이에 내용 작성 단계 : ", pElem.innerHTML);
 
-      const charatersElem = document.querySelector(".characters");
+      //   const charatersElem = document.querySelector(".characters");
 
-      charatersElem.appendChild(pElem); //생성된 엘리먼트 삽입
+      //   charatersElem.appendChild(pElem); //생성된 엘리먼트 삽입
 
       //삭제
       //   charatersElem.removeChild(document.querySelector(".b"));
 
+      //---------------------------------------------------------------------------------------------------------------------
       //js로 class 붙이기
-      const ilbuni = document.querySelector(".ilbuni");
+      //   const ilbuni = document.querySelector(".ilbuni");
       //방법 1
       //   ilbuni.classList.add("special");
 
@@ -82,14 +83,27 @@
       //ilbuni.classList.remove("ilbuni");
 
       //class를 toggle로 작동
-      ilbuni.classList.toggle("ilbuni"); //wow 놀랍다 !
+      //   ilbuni.classList.toggle("ilbuni"); //wow 놀랍다 !
 
       //---------------------------------------------------------------------------------------------------------------------
       //이벤트의 기본 동작
-      const ilbuniEvent = document.querySelector(".ilbuni:nth-child(3)");
-      ilbuniEvent.addEventListener("click", function () {
-        ilbuniEvent.classList.toggle("special");
-      }); //이벤트 등록
+      //   const ilbuniEvent = document.querySelector(".ilbuni:nth-child(3)");
+      //   ilbuniEvent.addEventListener("click", function () {
+      //     ilbuniEvent.classList.toggle("special");
+      //   }); //이벤트 등록
+
+      //즉시실행함수 //this
+      (function () {
+        const characters = document.querySelector(".characters");
+
+        function clickHandler(e) {
+          console.log(this); //이벤트가 등록되어 있는 객체를 가르킴
+          console.log(e.currentTarget); //이벤트가 등록되어 있는 객체를 가르킴
+          console.log(e.target); //이벤트의 실제 타겟
+        }
+
+        characters.addEventListener("click", clickHandler);
+      })();
     </script>
   </body>
 </html>
