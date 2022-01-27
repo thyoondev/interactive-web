@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .ball {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: red;
+        transition: 1s;
+        margin: -15px 0 0 -15px;
+      }
+
+      .ball.end {
+        background: dodgerblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ball"></div>
+
+    <script>
+      const ballElem = document.querySelector(".ball");
+
+      window.addEventListener("click", function (e) {
+        if (ballElem.classList.contains("end")) {
+          ballElem.classList.remove("end");
+        }
+        ballElem.style.transform = "translate(" + e.clientX + "px, " + e.clientY + "px) ";
+      });
+
+      ballElem.addEventListener("transitionend", function (e) {
+        ballElem.classList.add("end");
+        //트렌지션 재생 속도
+        console.log(e.elapsedTime);
+        console.log(e.propertyName);
+      });
+    </script>
+  </body>
+</html>
