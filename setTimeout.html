@@ -21,10 +21,15 @@
         console.log("setTimeout!");
       }
 
-      timeId = setTimeout(sample, 1000);
+      // timeId = setTimeout(sample, 1000);
+      timeId = setInterval(sample, 1000);
+
+      // btn.addEventListener("click", function () {
+      //   clearTimeout(timeId);
+      // });
 
       btn.addEventListener("click", function () {
-        clearTimeout(timeId);
+        clearInterval(timeId);
       });
     </script>
   </body>
