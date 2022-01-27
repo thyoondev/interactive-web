@@ -28,6 +28,7 @@
         width: 100%;
         height: 100%;
         background: #000;
+        overflow: hidden;
       }
       .ilbuni {
         position: absolute;
@@ -39,6 +40,7 @@
         background-position: 50% 100%;
         background-size: contain;
         transform: translate3d(100%, 0, 0);
+        transition: 0.5s 0.5s;
       }
       .door:nth-child(1) .ilbuni {
         background-image: url(/images/ilbuni_0.png);
@@ -57,6 +59,8 @@
         top: 0;
         width: 100%;
         height: 100%;
+        transition: 0.5s;
+        transform-origin: left;
       }
       .door:nth-child(1) .door-body {
         background: rgba(255, 0, 0, 0.7);
@@ -66,6 +70,12 @@
       }
       .door:nth-child(3) .door-body {
         background: rgba(0, 0, 255, 0.7);
+      }
+      .door:hover .door-body {
+        transform: perspective(800px) rotateY(-110deg);
+      }
+      .door:hover .ilbuni {
+        transform: translate3d(0%, 0, 0);
       }
     </style>
   </head>
