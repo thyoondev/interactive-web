@@ -6,6 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
+      @keyframes ball-ani {
+        from {
+          transform: translate(0, 0);
+        }
+        to {
+          transform: translate(200px, 200px);
+        }
+      }
+
       .ball {
         position: absolute;
         left: 0;
@@ -15,11 +24,10 @@
         border-radius: 50%;
         background: red;
         transition: 1s;
-        margin: -15px 0 0 -15px;
       }
 
       .ball.end {
-        background: dodgerblue;
+        border: 5px solid dodgerblue;
       }
     </style>
   </head>
@@ -29,18 +37,16 @@
     <script>
       const ballElem = document.querySelector(".ball");
 
-      window.addEventListener("click", function (e) {
-        if (ballElem.classList.contains("end")) {
-          ballElem.classList.remove("end");
-        }
-        ballElem.style.transform = "translate(" + e.clientX + "px, " + e.clientY + "px) ";
+      ballElem.addEventListener("click", function () {
+        ballElem.style.animation = "ball-ani 1s 3 alternate forwards";
       });
 
-      ballElem.addEventListener("transitionend", function (e) {
+      ballElem.addEventListener("animationend", function (e) {
         ballElem.classList.add("end");
-        //트렌지션 재생 속도
-        console.log(e.elapsedTime);
-        console.log(e.propertyName);
+      });
+
+      ballElem.addEventListener("animationiteration", function () {
+        console.log("반복");
       });
     </script>
   </body>
