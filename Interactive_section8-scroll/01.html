@@ -50,9 +50,24 @@
     <script>
       (function () {
         const outputElem = document.querySelector(".output");
-        window.addEventListener("scroll", function () {
+        const ilbuniElem = document.querySelector(".ilbuni");
+
+        function showValue() {
           //스크롤 얼마나?
-          outputElem.innerHTML = window.pageYOffset;
+          //  outputElem.innerHTML = window.pageYOffset;
+          //  outputElem.innerHTML = ilbuniElem.offsetTop;
+          let posY = ilbuniElem.getBoundingClientRect().top;
+          outputElem.innerHTML = posY;
+
+          if (posY < window.innerHeight * 0.2) {
+            ilbuniElem.classList.add("zoom");
+          } else {
+            ilbuniElem.classList.remove("zoom");
+          }
+        }
+
+        window.addEventListener("scroll", function () {
+          showValue();
         });
       })();
     </script>
