@@ -1,0 +1,60 @@
+body {
+  height: 500vw;
+  font-family: "Apple SD Gothic Neo", "Roboto", "Noto Sans KR", NanumGothic, "Malgun Gothic", sans-serif;
+  -webkit-overflow-scrolling: touch;
+  color: #555;
+  background: #fff000;
+}
+.world {
+  perspective: 1000px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.stage {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  transform-style: preserve-3d;
+}
+
+.house {
+  transform-style: preserve-3d;
+  width: 100vw;
+  height: 100vh;
+  transform: translateZ(-490vw);
+}
+
+.wall {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.wall-left {
+  width: 1000vw;
+  transform: rotateY(90deg) translateZ(-500vw);
+}
+.wall-right {
+  width: 1000vw;
+  transform: rotateY(90deg) translateZ(-400vw);
+}
+
+.wall-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.wall-title {
+  font-size: 5rem;
+}
