@@ -42,12 +42,25 @@ body {
 .wall-left {
   width: 1000vw;
   transform: rotateY(90deg) translateZ(-500vw);
+  background: #f8f8f8;
 }
 .wall-right {
   width: 1000vw;
   transform: rotateY(90deg) translateZ(-400vw);
+  background: #f8f8f8;
 }
-
+.wall-front-a {
+  transform: translateZ(300vw);
+}
+.wall-front-b {
+  transform: translateZ(50vw);
+}
+.wall-front-c {
+  transform: translateZ(-200vw);
+}
+.wall-front-d {
+  transform: translateZ(-500vw);
+}
 .wall-content {
   display: flex;
   justify-content: center;
