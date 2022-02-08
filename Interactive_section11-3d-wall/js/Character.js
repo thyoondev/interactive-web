@@ -32,4 +32,19 @@ function Character(info) {
 
   //캐릭터 위치 선정
   this.mainElem.style.left = info.xPos + "%";
+
+  //메서드 실행
+  this.init();
 }
+
+Character.prototype = {
+  constructor: Character,
+  init: function () {
+    //객체 가르키기
+    const self = this;
+    window.addEventListener("scroll", function () {
+      //함수 내부에서 this는 클릭한 대상, 즉 window 전역을 가리킴
+      self.mainElem.classList.add("running");
+    });
+  },
+};
