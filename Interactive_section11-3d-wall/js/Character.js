@@ -43,6 +43,9 @@ function Character(info) {
   this.xPos = info.xPos;
   this.speed = 1;
 
+  //방향
+  this.direction;
+
   //메서드 실행
   this.init();
 }
@@ -81,18 +84,34 @@ Character.prototype = {
 
     window.addEventListener("keydown", function (e) {
       if (e.key === "ArrowRight") {
+        self.direction = "left";
         self.mainElem.setAttribute("data-direction", "right");
         self.mainElem.classList.add("running");
-        self.xPos += self.speed;
-        self.mainElem.style.left = self.xPos + "%";
+        self.run();
       } else if (e.key === "ArrowLeft") {
+        self.direction = "right";
         self.mainElem.setAttribute("data-direction", "left");
         self.mainElem.classList.add("running");
+        self.run();
       }
     });
 
     window.addEventListener("keyup", function (e) {
       self.mainElem.classList.remove("running");
     });
+  },
+
+  run: function () {
+    const self = this;
+
+    if (self.direction === "left") {
+      self.xPos += self.speed;
+    } else if (self.direction === "right") {
+      self.xPos -= self.speed;
+    }
+
+    self.mainElem.style.left = self.xPos + "%";
+
+    requestAnimationFrame(self.run.bind(self));
   },
 };
