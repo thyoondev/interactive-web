@@ -33,6 +33,9 @@ function Character(info) {
   //캐릭터 위치 선정
   this.mainElem.style.left = info.xPos + "%";
 
+  //스크롤 중인지 아닌지
+  this.scrollState = false;
+
   //메서드 실행
   this.init();
 }
@@ -44,7 +47,18 @@ Character.prototype = {
     const self = this;
     window.addEventListener("scroll", function () {
       //함수 내부에서 this는 클릭한 대상, 즉 window 전역을 가리킴
-      self.mainElem.classList.add("running");
+
+      //스크롤 시 계쏙 timeout를 초기화해줌 -> 즉 class remove를 하지 못하게 막아줌
+      clearTimeout(self.scrollState);
+
+      if (!self.scrollState) {
+        self.mainElem.classList.add("running");
+      }
+
+      self.scrollState = setTimeout(function () {
+        self.scrollState = false;
+        self.mainElem.classList.remove("running");
+      }, 500);
     });
   },
 };
