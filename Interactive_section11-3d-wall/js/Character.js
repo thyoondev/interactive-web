@@ -1,6 +1,6 @@
 function Character(info) {
   this.mainElem = document.createElement("div");
-  this.mainElem.classList.add("character", "backward");
+  this.mainElem.classList.add("character");
   this.mainElem.innerHTML =
     "" +
     '<div class="character-face-con character-head">' +
@@ -39,6 +39,10 @@ function Character(info) {
   // 마지막 스크롤 위치
   this.lastScrollTop = 0;
 
+  //캐릭터 위치 속도
+  this.xPos = info.xPos;
+  this.speed = 1;
+
   //메서드 실행
   this.init();
 }
@@ -73,6 +77,22 @@ Character.prototype = {
       }
 
       self.lastScrollTop = scrollY;
+    });
+
+    window.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") {
+        self.mainElem.setAttribute("data-direction", "right");
+        self.mainElem.classList.add("running");
+        self.xPos += self.speed;
+        self.mainElem.style.left = self.xPos + "%";
+      } else if (e.key === "ArrowLeft") {
+        self.mainElem.setAttribute("data-direction", "left");
+        self.mainElem.classList.add("running");
+      }
+    });
+
+    window.addEventListener("keyup", function (e) {
+      self.mainElem.classList.remove("running");
     });
   },
 };
