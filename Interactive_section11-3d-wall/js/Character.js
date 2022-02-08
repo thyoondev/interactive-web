@@ -43,8 +43,13 @@ function Character(info) {
   this.xPos = info.xPos;
   this.speed = 1;
 
+  //좌우 이동 중인지 아닌지
+  this.runningState = false;
+
   //방향
   this.direction;
+
+  this.rafId;
 
   //메서드 실행
   this.init();
@@ -83,21 +88,26 @@ Character.prototype = {
     });
 
     window.addEventListener("keydown", function (e) {
+      if (self.runningState) return;
+
       if (e.key === "ArrowRight") {
-        self.direction = "left";
+        self.direction = "right";
         self.mainElem.setAttribute("data-direction", "right");
         self.mainElem.classList.add("running");
         self.run();
+        self.runningState = true;
       } else if (e.key === "ArrowLeft") {
-        self.direction = "right";
+        self.direction = "left";
         self.mainElem.setAttribute("data-direction", "left");
         self.mainElem.classList.add("running");
         self.run();
+        self.runningState = true;
       }
     });
 
     window.addEventListener("keyup", function (e) {
       self.mainElem.classList.remove("running");
+      this.cancelAnimationFrame(self.rafID);
     });
   },
 
@@ -105,13 +115,21 @@ Character.prototype = {
     const self = this;
 
     if (self.direction === "left") {
-      self.xPos += self.speed;
-    } else if (self.direction === "right") {
       self.xPos -= self.speed;
+    } else if (self.direction === "right") {
+      self.xPos += self.speed;
+    }
+
+    if (self.xPos < 2) {
+      self.xPos = 2;
+    }
+
+    if (self.xPos > 88) {
+      self.xPos = 88;
     }
 
     self.mainElem.style.left = self.xPos + "%";
 
-    requestAnimationFrame(self.run.bind(self));
+    self.rafID = requestAnimationFrame(self.run.bind(self));
   },
 };
