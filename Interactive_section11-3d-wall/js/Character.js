@@ -41,7 +41,7 @@ function Character(info) {
 
   //캐릭터 위치 속도
   this.xPos = info.xPos;
-  this.speed = 1;
+  this.speed = info.speed;
 
   //좌우 이동 중인지 아닌지
   this.runningState = false;
@@ -108,6 +108,7 @@ Character.prototype = {
     window.addEventListener("keyup", function (e) {
       self.mainElem.classList.remove("running");
       this.cancelAnimationFrame(self.rafID);
+      self.runningState = false;
     });
   },
 
