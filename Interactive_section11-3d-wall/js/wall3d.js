@@ -25,5 +25,13 @@
   });
 
   window.addEventListener("resize", resizeHandler);
+
+  //캐릭터 생성
+  stageElem.addEventListener("click", function (e) {
+    new Character({
+      xPos: (e.clientX / window.innerWidth) * 100,
+    });
+  });
+
   resizeHandler();
 })();

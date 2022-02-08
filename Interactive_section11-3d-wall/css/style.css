@@ -129,6 +129,7 @@ body {
   transform: rotateY(180deg);
 }
 .character-head {
+  /* 퍼센트 계산 */
   left: calc(42 / 856 * 100%);
   top: 0;
   z-index: 60;
@@ -298,4 +299,26 @@ body[data-char="ragirl"] .character-leg-left .face-front {
 }
 body[data-char="ragirl"] .character-leg-left .face-back {
   background-image: url("../images/ragirl_leg_0.png");
+}
+/* animation */
+@keyframes ani-head {
+  to {
+    transform: rotateX(-10deg);
+  }
+}
+@keyframes ani-running-leg {
+  from {
+    transform: rotateX(-30deg);
+  }
+  to {
+    transform: rotateX(30deg);
+  }
+}
+@keyframes ani-running-arm {
+  from {
+    transform: rotateY(30deg);
+  }
+  to {
+    transform: rotateY(-30deg);
+  }
 }
