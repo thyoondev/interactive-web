@@ -1,6 +1,6 @@
 function Character(info) {
   this.mainElem = document.createElement("div");
-  this.mainElem.classList.add("character");
+  this.mainElem.classList.add("character", "backward");
   this.mainElem.innerHTML =
     "" +
     '<div class="character-face-con character-head">' +
@@ -36,6 +36,9 @@ function Character(info) {
   //스크롤 중인지 아닌지
   this.scrollState = false;
 
+  // 마지막 스크롤 위치
+  this.lastScrollTop = 0;
+
   //메서드 실행
   this.init();
 }
@@ -59,6 +62,17 @@ Character.prototype = {
         self.scrollState = false;
         self.mainElem.classList.remove("running");
       }, 500);
+
+      //스크롤에 따른 캐릭터 앞 뒤 모습
+      if (self.lastScrollTop > scrollY) {
+        //이전 스크롤 위치가 크다면: 스크롤 올림
+        self.mainElem.setAttribute("data-direction", "backward");
+      } else {
+        //이전 스크롤 위치가 작다면: 스크롤 내림
+        self.mainElem.setAttribute("data-direction", "forward");
+      }
+
+      self.lastScrollTop = scrollY;
     });
   },
 };
